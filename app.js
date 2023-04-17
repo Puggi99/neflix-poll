@@ -62,7 +62,22 @@ function displaySeries() {
         newLi.appendChild(creatorSpan);
         newLi.appendChild(seasonsSpan)
 
-        newLi.appendChild(createUpvoteButton(serie))
+        const upVoteBtn = document.createElement('button');
+    const upVoteNode = document.createTextNode('UP')
+    
+    upVoteBtn.appendChild(upVoteNode);
+    upVoteBtn.upVote = serie.upVotes;
+    upVoteBtn.classList.add('serie-upVote')
+    upVoteBtn.addEventListener('click', (event) =>{
+        serie.addUpVotes();
+        displaySeries();
+        DataService.putSerie(serie).then(updateSerie => {
+            displaySeries();
+            console.log(serie.addUpVotes())
+    } )
+}
+)
+        newLi.appendChild(upVoteBtn)
         newLi.appendChild(createdownVoteButton(serie))
 
         
@@ -106,21 +121,7 @@ function createUpvoteButton(serie){
     //         console.log(serie.upVotes)
     // });
     // return upvoteBtn;
-    const upVoteBtn = document.createElement('button');
-    const upVoteNode = document.createTextNode('UP')
-    
-    upVoteBtn.appendChild(upVoteNode);
-    upVoteBtn.upVote = serie.upVotes;
-    upVoteBtn.classList.add('serie-upVote')
-    upVoteBtn.addEventListener('click', (event) =>{
-        upVoteBtn.upVote++
-        displaySeries()
-        console.log(Serie.upVotes)
-    } )
-  
-
-    return upVoteBtn
-}
+    }
 
 Serie.downVotes = 0
 function createdownVoteButton(serie){

@@ -20,14 +20,29 @@ class Serie {
     }
 
 
-    addupVotes(serie){
-        this.upVotes+=1
+    addUpVotes(){
+        const i = this.upVotes
+        this.upVotes = i + 1
+        return this.upVotes
     }
 
     addDownVotes(){
         this.downVotes+=1
     }
 
+    toDbModel() {
+        const dbModel = {
+            title: this.title,
+            creator: this.creator,
+            seasons: this._seasons,
+            isCompleted: this._isCompleted,
+            upVotes: this.upVotes,
+            downVotes: this.downVotes,
+            imageUrl: this.imageUrl,
+            id: this.id
+        };
+        return dbModel;
+    };
 }
 
 
