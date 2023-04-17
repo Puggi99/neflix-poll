@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,29 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    ///Order By title
+    <div id="main">
+        <h1 id="list-name"><img src="./assets/Netflix-new-icon.png" alt=""></h1>
+      <div class="buttons-replace">
+        <button class="buttonUnderLogo" onclick="orderByTitle()">ordina per titolo</button>
+        <button class="buttonUnderLogo" onclick="orderByUpVote()">ordina per upVote</button>
+        <button class="buttonUnderLogo" onclick="orderByDownVote()">ordina per downVote</button>
+        <button class="buttonUnderLogo" onclick="orderByBest()">Il miglior votato</button>
+      </div>
+
+        <ul id="series-list">
+          
+        </ul>
+    </div>
+    <!-- ///Order By title
     ///Order by upVote
     ///Order By downVote
-    ///Order By Best
-    
+    ///Order By Best -->
+
 </body>
+<script src="./services/data-service.js"></script>
 <script src="./model/serie.js"></script>
+<script src="./model/collection.js"></script>
+<script src="./app.js"></script>
 </html>

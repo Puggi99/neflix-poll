@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+body{
+    background-color: black;
+}
+*{
+    font-family: 'Bebas Neue', cursive;
+    color: white
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid white;
+    flex-grow: 1;
+    
+    
+}
+#list-name{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    padding-top: 100px;
+
+}
+.buttonUnderLogo{
+    background-color: red;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 10%;
+}
+.buttons-replace{
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    
+    
+}
+ul{
+    font-size: 10px;
+    font-family: 'Bebas Neue', cursive;
+
+    
+}
+
+#series-list{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border: 1px solid black;
+    justify-content: space-evenly;
+    margin-top: 35vh;
+    flex-grow: 1;
+    flex-basis: 0;
+    
+}
+
+.serie-title, .creator-name, .seasons-number{
+    text-shadow: 2px 0px red;
+}
+.serie-li{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    border: 1px solid blue;
+    width: max-content;
+    flex-basis: 0;
+    
+}
