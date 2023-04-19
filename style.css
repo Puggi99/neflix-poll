@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-body{
+html,body{
+    height: auto;
     background-color: black;
+    
 }
 *{
     font-family: 'Bebas Neue', cursive;
@@ -44,25 +46,28 @@ ul{
 }
 
 #series-list{
-    height: 80vh;
+    height: auto;
     display: flex;
-    flex-direction: column;
+    flex-flow:wrap;
     box-sizing: border-box;
-    border: 1px solid black;
-    justify-content: space-evenly;
-    margin-top: 20vh;
+    border: 1px solid white;
+    justify-content:center;
+    align-self: center;
+    padding: 0px 300px;
     flex-grow: 1;
     flex-basis: 0;
-    align-items: center;
-    padding: 100px;
+    
+    
+   
+  
     
 }
 
 .serie-title, .creator-name, .seasons-number{
-    text-shadow: 2px 0px red;
+   color: white;
+   text-shadow: 1px 1px rgba(255, 0, 0, 0.61);
 }
 .serie-li{
-    
     display: flex;
     flex-direction: column;
     font-size: 20px;
@@ -71,8 +76,33 @@ ul{
     box-sizing: border-box;
     border: 1px solid wheat;
     border-radius: 10%;
-    height: 50vw;
+    height: 300px;
     max-width: 250px;
-    flex-basis: 0;
+    justify-content: space-between;
+    align-content: center;
+    background-color: rgba(66, 66, 66, 0.418);
     
+}
+
+
+.add-down-container img{
+    height: 20px;
+    width: 20px;
+    background-color: none;
+}
+
+.add-down-container{
+    width: max-content;
+    height: max-content;
+    background-color: none;
+    box-sizing: border-box;
+    border: 1px solid white;
+    align-self: center;
+    padding: 15px;
+
+}
+
+
+ button{
+    background-color: rgba(0, 0, 0, 0.767);
 }

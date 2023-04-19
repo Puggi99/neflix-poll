@@ -6,8 +6,8 @@ class DataService{
     }
 
     static putSerie(serie){
-        const jsonSeries = JSON.stringify(serie.toDbModel);
-        return fetch(`https://643694673e4d2b4a12d616bf.mockapi.io/Netflix/` + serie.id, {method: `PUT`, body: jsonSeries, headers: {'content-type':'application/json'}})
+        const jsonSeries = JSON.stringify(serie);
+        return fetch(`https://643694673e4d2b4a12d616bf.mockapi.io/Netflix/`+ serie.id , {method: `PUT`, body: jsonSeries, headers: {'content-type':'application/json'}})
             .then(resp => resp.json());
     }
 

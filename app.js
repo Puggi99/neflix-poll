@@ -11,7 +11,7 @@ DataService.getSeries().then(data => {
 function fillSeriesArrayFromServer(data) {
     for (let i = 0; i < data.length; i++) {
         const object = data[i];
-        const serie = new Serie(object.title, object.creator, object.seasons, object.isCompleted, object.upVotes, object.downVotes,object.imageURL, object.id);
+        const serie = new Serie(object.title, object.creator, object.seasons, object.isCompleted, object.upVotes, object.downVotes, object.imageURL, object.id);
         seriesList.addSerie(serie);
     }
 }
@@ -62,31 +62,49 @@ function displaySeries() {
         newLi.appendChild(creatorSpan);
         newLi.appendChild(seasonsSpan)
 
+
         const upVoteBtn = document.createElement('button');
-    const upVoteNode = document.createTextNode('UP')
-    
-    upVoteBtn.appendChild(upVoteNode);
-    upVoteBtn.upVote = serie.upVotes;
-    upVoteBtn.classList.add('serie-upVote')
-    upVoteBtn.addEventListener('click', (event) =>{
-        DataService.putSerie(serie).then(updateSerie => {
-            displaySeries();
-            console.log(serie.addUpVotes())
-    } )
-}
-)
-        newLi.appendChild(upVoteBtn)
-        newLi.appendChild(createdownVoteButton(serie))
+        upVoteBtn.innerHTML ='<img src="./assets/pngfind.com-thumbs-upemoji-png-6827427.png"/>' + serie.upVotes
+
+        // upVoteBtn.upVote = serie.upVotes;
+        upVoteBtn.classList.add('serie-upvote')
+        upVoteBtn.addEventListener('click', (event) => {
+            DataService.putSerie(serie).then(updateSerie => {
+                console.log(serie.addUpVotes())
+                displaySeries();
+             
+                
+            })
+        }
+        )
+
+        const downVoteBtn = document.createElement('button');
+        downVoteBtn.innerHTML ='<img src="./assets/pngfind.com-thumbs-downicon-png-59489.png"/>'+ serie.downVotes;
 
         
-      
+        downVoteBtn.classList.add('serie-downVote')
+
+        downVoteBtn.addEventListener('click', (event) => {
+            DataService.putSerie(serie).then(updateSerie => {
+                
+                console.log(serie.addDownVotes())
+                displaySeries();
+            })
+        }
+        )
+        const buttonContainer = document.createElement('div')
+        buttonContainer.classList.add('add-down-container')
+        buttonContainer.appendChild(upVoteBtn);
+        buttonContainer.appendChild(downVoteBtn)
+
+        newLi.appendChild(buttonContainer)
+
+
 
         serieUl.appendChild(newLi);
     }
 }
 
-
-//FUNZIONI PER RIDURRE LE DIMENSIONI
 
 
 function orderByTitle() {
@@ -105,11 +123,11 @@ function orderByDownVotes() {
 }
 
 function orderByBest() {
-    seriesList.sortByBest();
+    seriesList.sortByRating();
     displaySeries();
 }
 
-function createUpvoteButton(serie){
+function createUpvoteButton(serie) {
     // const upvoteBtn = document.createElement('button');;
     // const upvoteNode = document.createTextNode(`Upvote`);
     // upvoteBtn.appendChild(upvoteNode);
@@ -119,24 +137,11 @@ function createUpvoteButton(serie){
     //         console.log(serie.upVotes)
     // });
     // return upvoteBtn;
-    }
-
-Serie.downVotes = 0
-function createdownVoteButton(serie){
-
-    const downvoteBtn = document.createElement('button');;
-    const downvoteNode = document.createTextNode(`Downvote`);
-    downvoteBtn.appendChild(downvoteNode);
-    downvoteBtn.addEventListener('click', (event) => {
-        Serie.addDownVotes();
-        displaySeries();
-        console.log(serie.downVotes)
-    });
-    return downvoteBtn;
 }
 
 
-function createImgOfSerie(serie){
+
+function createImgOfSerie(serie) {
     const imgTag = document.createElement('img');
     imgTag.classList.add('serie-img');
     imgTag.src = serie.imageURL;
