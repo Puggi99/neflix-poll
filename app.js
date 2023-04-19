@@ -69,8 +69,6 @@ function displaySeries() {
     upVoteBtn.upVote = serie.upVotes;
     upVoteBtn.classList.add('serie-upVote')
     upVoteBtn.addEventListener('click', (event) =>{
-        serie.addUpVotes();
-        displaySeries();
         DataService.putSerie(serie).then(updateSerie => {
             displaySeries();
             console.log(serie.addUpVotes())
