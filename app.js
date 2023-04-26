@@ -176,18 +176,35 @@ function createImgOfSerie(serie) {
 function saveNewSerie(){
     const titleInput = document.getElementById('title-input')
     const creatorInput = document.getElementById('creator-input')
+    const seasonsInput = document.getElementById('seasons-input')
+    const isCompleteInput = document.getElementById('isComplete-input')
+    const imageInput = document.getElementById('image-input')
 
     const newSerieTitle = titleInput.value;
     const newSerieCreator = creatorInput.value;
-
-    const newSerie = new Serie(newSerieTitle, newSerieCreator);
+    const newSerieSeasons = seasonsInput.value;
+    const newSerieIsComplete = isCompleteInput.value;
+    const newUpVotes = 0;
+    const newDownVotes = 0;
+    const newSerieImage = imageInput.value;
+    
+    const newSerie = new Serie(newSerieTitle, newSerieCreator, newSerieSeasons, newSerieIsComplete, newUpVotes, newDownVotes, newSerieImage);
 
     console.log(newSerie)
     DataService.postSerie(newSerie).then(savedSerie => {
+        stopLoading();
+        //const finalSerie = new Serie(savedSerie.title, savedSerie.creator, savedSerie.seasons, savedSerie.isCompleted, savedSerie.upVotes, savedSerie.downVotes, savedSerie.imageUrl, savedSerie.id );
         newSerie.id = savedSerie.id;
+        newSerie.title = savedSerie.title;
+        newSerie.isComplet
+        newSerie.creator = savedSerie.creator;
+        // newSerie.isCompleted = savedSerie.isCompleted;
+        newSerie.imageURL = savedSerie.imageURL;
         seriesList.addSerie(newSerie);
         displaySeries()
-    }).catch(err=>{
+    })
+  
+    .catch(err=>{
         displayErrorMessage('accidenti, al momento non è possibile salvare');
  
     

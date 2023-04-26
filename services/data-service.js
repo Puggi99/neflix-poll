@@ -13,7 +13,7 @@ class DataService{
 
     static postSerie(serie){
         const jsonSerie = JSON.stringify(serie);
-        return fetch(`https://643694673e4d2b4a12d616bf.mockapi.io/Netflix/`, {method: `POST`,  headers: {'content-type':'application/json', body: jsonSerie}})
-        .then(resp => resp.json())
+        return fetch(`https://643694673e4d2b4a12d616bf.mockapi.io/Netflix`, {method:'POST', headers:{'content-type':'application/json'}, body: jsonSerie}).then(resp => resp.json())
+      
     }
 }
