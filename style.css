@@ -12,8 +12,8 @@ html,body{
 #main{
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    border: 1px solid white;
+    /* box-sizing: border-box;
+    border: 1px solid white; */
     flex-grow: 1;
     
     
@@ -49,8 +49,8 @@ ul{
     height: auto;
     display: flex;
     flex-flow:wrap;
-    box-sizing: border-box;
-    border: 1px solid white;
+    /* box-sizing: border-box;
+    border: 1px solid white; */
     justify-content:center;
     align-self: center;
     padding: 0px 300px;
@@ -94,8 +94,8 @@ ul{
 .add-down-container{
     width: max-content;
     height: max-content;
-    background-color: none;
-    box-sizing: border-box;
+    /* background-color: none;
+    box-sizing: border-box; */
     border: 1px solid white;
     align-self: center;
     padding: 15px;
@@ -106,3 +106,25 @@ ul{
  button{
     background-color: rgba(0, 0, 0, 0.767);
 }
+
+footer{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#creator-input{
+    margin: 0 10px;
+}
+
+#title-input{
+    color: rgba(0, 0, 0, 0.774);
+    padding-right: 10px
+}
+
+
+#creator-input{
+    color: black 
+
+}
+

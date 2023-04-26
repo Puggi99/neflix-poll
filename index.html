@@ -2,35 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <div id="main">
-        <h1 id="list-name"><img src="./assets/Netflix-new-icon.png" alt=""></h1>
-      <div class="buttons-replace">
-        <button class="buttonUnderLogo" onclick="orderByTitle()">ordina per titolo</button>
-        <button class="buttonUnderLogo" onclick="orderByUpVotes()">ordina per upVote</button>
-        <button class="buttonUnderLogo" onclick="orderByDownVotes()">ordina per downVote</button>
-        <button class="buttonUnderLogo" onclick="orderByBest()">Il miglior votato</button>
-      </div>
 
-        <ul id="series-list">
-          
-        </ul>
+  <div id="main">
+    <h1 id="list-name"><img src="./assets/Netflix-new-icon.png" alt="">
+    <img id="gif" src="./assets/netf.gif" alt=""></h1>
+    
+    <div class="buttons-replace">
+      <button class="buttonUnderLogo" onclick="orderByTitle()">ordina per titolo</button>
+      <button class="buttonUnderLogo" onclick="orderByUpVotes()">ordina per upVote</button>
+      <button class="buttonUnderLogo" onclick="orderByDownVotes()">ordina per downVote</button>
+      <button class="buttonUnderLogo" onclick="orderByBest()">Il miglior votato</button>
     </div>
-    <!-- ///Order By title
-    ///Order by upVote
-    ///Order By downVote
-    ///Order By Best -->
 
+    <p id="error-message">
+
+    </p>
+
+    <ul id="series-list">
+
+    </ul>
+
+  </div>
 </body>
+
+<footer>
+  <span>Inserisci Titolo</span>
+  <input type="text" id="title-input">
+  <span>Inserisci Creatore</span>
+  <input type="text" id="creator-input">
+  <button onclick="saveNewSerie()">>Save<</button>
+</footer>
 <script src="./services/data-service.js"></script>
 <script src="./model/serie.js"></script>
 <script src="./model/collection.js"></script>
 <script src="./app.js"></script>
+
 </html>

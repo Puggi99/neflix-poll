@@ -1,11 +1,18 @@
 "use strict"
 let seriesList = new Collection('')
 
-displaySeries()
 
+startLoading()
 DataService.getSeries().then(data => {
     fillSeriesArrayFromServer(data);
     displaySeries();
+    stopLoading()
+}).catch(err =>{
+    // const errorMessage = document.getElementById('error-message');
+    // const errorNode = document.createTextNode('accidenti, si è verificato un errore ');
+    // errorMessage.appendChild(errorNode);
+    displayErrorMessage('accidenti, si è verificato un errore')
+    stopLoading()
 })
 
 function fillSeriesArrayFromServer(data) {
@@ -71,12 +78,13 @@ function displaySeries() {
         upVoteBtn.addEventListener('click', (event) => {
             DataService.putSerie(serie).then(updateSerie => {
                 console.log(serie.addUpVotes())
-                displaySeries();
-             
-                
-            })
-        }
-        )
+                displaySeries()
+        }).catch(err=>{
+            displayErrorMessage('accidenti, al momento non è possibile votare');
+     
+        
+    })
+    })
 
         const downVoteBtn = document.createElement('button');
         downVoteBtn.innerHTML ='<img src="./assets/pngfind.com-thumbs-downicon-png-59489.png"/>'+ serie.downVotes;
@@ -88,8 +96,22 @@ function displaySeries() {
             DataService.putSerie(serie).then(updateSerie => {
                 
                 console.log(serie.addDownVotes())
+                startLoading()
                 displaySeries();
-            })
+                
+
+
+
+
+
+
+
+                
+            }).catch(err=>{
+                displayErrorMessage('accidenti, al momento non è possibile votare');
+         
+            
+        })
         }
         )
         const buttonContainer = document.createElement('div')
@@ -147,4 +169,48 @@ function createImgOfSerie(serie) {
     imgTag.src = serie.imageURL;
 
     return imgTag
+}
+
+
+
+function saveNewSerie(){
+    const titleInput = document.getElementById('title-input')
+    const creatorInput = document.getElementById('creator-input')
+
+    const newSerieTitle = titleInput.value;
+    const newSerieCreator = creatorInput.value;
+
+    const newSerie = new Serie(newSerieTitle, newSerieCreator);
+
+    console.log(newSerie)
+    DataService.postSerie(newSerie).then(savedSerie => {
+        newSerie.id = savedSerie.id;
+        seriesList.addSerie(newSerie);
+        displaySeries()
+    }).catch(err=>{
+        displayErrorMessage('accidenti, al momento non è possibile salvare');
+ 
+    
+})
+    // seriesList.addSerie(newSerie);
+
+    // displaySeries()
+}
+
+
+function displayErrorMessage(message){
+    const errorMessage = document.getElementById('error-message');
+    const errorNode = document.createTextNode(message);
+    errorMessage.appendChild(errorNode);
+}
+
+
+function startLoading(){
+    const loadingIcon = document.getElementById('gif');
+    loadingIcon.style.display = 'inline-block' 
+}
+
+function stopLoading(){
+    const loadingIcon = document.getElementById('gif');
+    loadingIcon.style.display = 'none' 
 }
